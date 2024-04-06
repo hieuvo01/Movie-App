@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from "./src/components/header";
 import { ThemeProvider } from "@/components/ui/provider";
-
+import Footer from "./src/components/footer";
 
 export const metadata: Metadata = {
   title: "Movie App",
@@ -25,6 +25,7 @@ export default function RootLayout({
           >
             <Header />
             {children}
+            <Footer />
           </ThemeProvider>
           </body>
     </html>

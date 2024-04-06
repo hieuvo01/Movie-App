@@ -2,6 +2,8 @@ import Link from 'next/link'
 import Image from 'next/image'
 import React from 'react'
 import { ModeToggle } from '@/components/ui/themetoggle'
+import SearchBar from './search-bar'
+import GenerateDropdown from './generate'
 
 function Header() {
   return (
@@ -10,8 +12,8 @@ function Header() {
             <Image width={120} height={110} className='cursor-pointer invert-0 dark:invert' alt="" src="/phimmoi.png" />
         </Link>
         <div className='flex space-x-2'>
-            {/* gene */}
-            {/* search */}
+            <GenerateDropdown />
+            <SearchBar />
             <ModeToggle />
         </div>
     </header>

@@ -7,7 +7,7 @@ type IProps= {
 }
 
 
-export default function SearchBar({params: {term}} :IProps)
+export default function SearchPag({params: {term}} :IProps)
 {
     if(!term) return notFound;
     const termToUse = decodeURI(term);
