@@ -6,6 +6,7 @@ import {
     CarouselNext,
     CarouselPrevious,
   } from "@/components/ui/carousel"
+import { cn } from '@/lib/utils'
 
 type Iprops = {
   movies: any,
@@ -14,32 +15,29 @@ type Iprops = {
 
 
 function MovieCarousel({ movies, title }: Iprops) {
-  console.log(movies)
   return (
-    <Carousel className="w-full max-w-2xl mx-auto"> {/* Set width and center */}
-      {/* <CarouselTitle>{title}</CarouselTitle> Add title outside carousel */}
-      <CarouselContent className="flex overflow-x-scroll scroll-smooth snap-x snap-mandatory">
-        {movies.map((movie: any) => (
-          <CarouselItem key={movie.id} className="snap-item w-full"> {/* Set width per item */}
-            <div className="movie-item bg-gray-100 p-4 rounded shadow-md">
-              <img src={movie.posterUrl} alt={movie.title} className="h-48 w-full object-cover rounded-t-md" />
-              <h3>{movie.title}</h3>
-              {/* Add other movie details as needed */}
+    <div className='z-50'>
+      <h2 className='text-xl font-bold px-10 py-2'>{title}</h2>
+      <div className={cn('flex space-x-4 overflow-scroll px-5 lg:px-10 py-5 scrollbar-hide')}>
+        <Carousel>
+        <CarouselContent>
+          {
+            movies?.data.map((movie: any) =>( 
+              <div className='relative flex-shrink-0 cursor-pointer transform hover:scale-105 transition duration-200 ease-out hover: drop-shadow-lg'>
+                  <div className='absolute inset-0 bg-gradient-to-b from-gray-200/0 to-gray-300 via-gray-900/10 z-10 dark:to-[1a1c29]' />
+                <p className='absolute z-20 left-5 bottom-5'>{movie.title}</p>
+              <CarouselItem><img className='w-fit lg:min-w-[400px] h-56 object-cover object-center shadow-md shadow-gray-900 drop-shadow-xl
+              rounded-sm' alt={movie.original_title as any} src={movie.poster_path}/></CarouselItem>
             </div>
-          </CarouselItem>
-        ))}
-      </CarouselContent>
-      <CarouselPrevious className="absolute left-0 ml-4 top-1/2 -translate-y-1/2 focus:outline-none"> {/* Style previous button */}
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 18l-6-6l6-6" />
-        </svg>
-      </CarouselPrevious>
-      <CarouselNext className="absolute right-0 mr-4 top-1/2 -translate-y-1/2 focus:outline-none"> {/* Style next button */}
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l6 6-6 6" />
-        </svg>
-      </CarouselNext>
-    </Carousel>
+          ))
+          }
+        </CarouselContent>
+        {/* <CarouselPrevious />
+        <CarouselNext /> */}
+      </Carousel>
+      </div>
+    </div>
+
   )
 }
 
