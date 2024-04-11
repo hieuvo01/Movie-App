@@ -10,7 +10,7 @@ async function FetchMovieFromTMDB(url: URL, cacheTime?: number){
         method: 'GET',
         headers: {
           'Accept': 'application/json',
-          'Authorization': `Bearer ${process.env.API_KEY}` // Assuming API key usage with Bearer token
+          'Authorization': `Bearer ${process.env.API_KEY}`
         },
         next: {
           revalidate: cacheTime || 24 * 60 * 60 // 24 hours
@@ -27,20 +27,27 @@ export async function getUpcomingMovies(){
     //get upcoming movies
     const url = `${process.env.URL_MOVIE}/movies/upcoming`;
     const data = await axios.get(url).then(res => res.data).catch(err => console.log(err));
+    // console.log('upcoming: ', data);
     return data;
 }
 
 export async function getMostRatedMovies(){
     //get most rated movies
-    const url = new URL(`${process.env.URL_MOVIE}/movies/top_rated`);
-    const data = await FetchMovieFromTMDB(url);
+    const url = `${process.env.URL_MOVIE}/movies/top_rated`;
+    // const url = new URL(`${process.env.URL_MOVIE}/movies/top_rated`);
+    const data = await axios.get(url).then(res => res.data).catch(err => console.log(err));
+    // const data = await FetchMovieFromTMDB(url);
+    // console.log('top rated: ', data);
     return data;
 }
 
 export async function getPopularMovies(){
     //get popular movies
-    const url = new URL(`${process.env.URL_MOVIE}/movies/popular`);
-    const data = await FetchMovieFromTMDB(url);
+    const url = `${process.env.URL_MOVIE}/movies/popular`;
+    // const url = new URL(`${process.env.URL_MOVIE}/movies/popular`);
+    const data = await axios.get(url).then(res => res.data).catch(err => console.log(err));
+    // const data = await FetchMovieFromTMDB(url);
+    // console.log('popular: ', data);
     return data;
 }
 

@@ -11,11 +11,11 @@ export default async function Home() {
   const popularMovies = await getPopularMovies();
 
   return (
-      <main style={{height: '80vh'}}>
+      <main style={{height: '80vh', marginTop: '5%'}}>
         <div>
         <SliderMovie movies={upcomingMovies} title="Features movies"/>
         </div>
-        <div className="flex flex-col space-y-2 xl:-mt-48">
+        <div className="flex flex-col space-y-2 mt-0">
           {/* Phim sắp ra mắt  */}
           <MovieCarousel movies={upcomingMovies} title="Up coming movies" />
           {/* Phim nổi bật */}
