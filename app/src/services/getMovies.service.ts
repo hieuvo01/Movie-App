@@ -27,44 +27,47 @@ export async function getUpcomingMovies(){
     //get upcoming movies
     const url = `${process.env.URL_MOVIE}/movies/upcoming`;
     const data = await axios.get(url).then(res => res.data).catch(err => console.log(err));
-    // console.log('upcoming: ', data);
     return data;
 }
 
 export async function getMostRatedMovies(){
     //get most rated movies
     const url = `${process.env.URL_MOVIE}/movies/top_rated`;
-    // const url = new URL(`${process.env.URL_MOVIE}/movies/top_rated`);
     const data = await axios.get(url).then(res => res.data).catch(err => console.log(err));
-    // const data = await FetchMovieFromTMDB(url);
-    // console.log('top rated: ', data);
     return data;
 }
 
 export async function getPopularMovies(){
     //get popular movies
     const url = `${process.env.URL_MOVIE}/movies/popular`;
-    // const url = new URL(`${process.env.URL_MOVIE}/movies/popular`);
     const data = await axios.get(url).then(res => res.data).catch(err => console.log(err));
-    // const data = await FetchMovieFromTMDB(url);
-    // console.log('popular: ', data);
     return data;
 }
 
-export async function getDiscoverMovies(id?: string, keywords?: string){
+export async function getDiscoverMovies(id?: string){
     //get discover movies
-    const url = new URL(`${process.env.URL_MOVIE}/movies`);
-    keywords && url.searchParams.set('with_keywords', keywords);
+    const url = new URL(`${process.env.URL_MOVIE}/movies/discover`);
     id && url.searchParams.set('with_genres', id);
     const data = await FetchMovieFromTMDB(url);
     return data;
 }
 
+
+
 //search movie
 export async function searchMovie(term: string){
     //get popular movies
-    const url = new URL(`${process.env.URL_MOVIE}/search/movie`);
-    url.searchParams.set('query', term);
+    const url = new URL(`${process.env.URL_MOVIE}/movies/search`);
+    url.searchParams.set('search', term);
     const data = await FetchMovieFromTMDB(url);
+    return data;
+}
+
+
+//search movie detail
+export async function detailMovie(id: string){
+    //get popular movies
+    const url = `http://localhost:3001/movies/${id}`;
+    const data = await axios.get(url).then(res => res.data).catch(err => console.log(err));
     return data;
 }

@@ -5,7 +5,7 @@ import { ThemeProvider } from "@/components/ui/provider";
 import Footer from "./src/components/footer";
 
 export const metadata: Metadata = {
-  title: "Movie App",
+  title: "iMovies",
   description: "movie app",
 };
 

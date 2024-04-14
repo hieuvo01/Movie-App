@@ -1,24 +1,22 @@
+import MovieCarousel from "@/app/src/components/movie-carousel";
+import { getDiscoverMovies } from "@/app/src/services/getMovies.service";
 import { notFound } from "next/navigation"
 
 type IProps= {
     params: {
         id: string
     };
-    searchParams: {
-        generate: string
-    }
 }
 
 
-export default function GeneratePage({params: {id}, searchParams: {generate}} :IProps)
+export default async function GeneratePage({params: {id}} :IProps)
 {
     if(!id) return notFound;
-    const idToUse = decodeURI(id);
+    const data = await getDiscoverMovies(id);
     return (
-        <div>
-          <h1>{idToUse}</h1>
-          <h1>{generate}</h1>
-        </div>
-    )
+      <div>
+        <MovieCarousel movies={data} title="" isVertical />
+      </div>
+    );
 }
   

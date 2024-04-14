@@ -1,19 +1,19 @@
-import Image from "next/image";
-import { Button } from "@/components/ui/button"
 import MovieCarousel from "./src/components/movie-carousel";
-import { getMostRatedMovies, getPopularMovies, getUpcomingMovies } from "./src/services/getMovies.service";
+import { getMostRatedMovies, getPopularMovies, getUpcomingMovies, getDiscoverMovies } from "./src/services/getMovies.service";
 import SliderMovie from "./src/components/slider-movie";
 
 
 export default async function Home() {
+  const discoverMovies = await getDiscoverMovies();
   const upcomingMovies = await getUpcomingMovies();
   const mostRatedMovies = await getMostRatedMovies();
   const popularMovies = await getPopularMovies();
 
   return (
-      <main style={{height: '80vh', marginTop: '5%'}}>
+      <main style={{height: '80vh'}}>
         <div>
-        <SliderMovie movies={upcomingMovies} title="Features movies"/>
+        {/* <SliderMovie movies={upcomingMovies} title="Features movies"/> */}
+        <SliderMovie/>
         </div>
         <div className="flex flex-col space-y-2 mt-0">
           {/* Phim sắp ra mắt  */}
