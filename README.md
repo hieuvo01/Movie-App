@@ -1,4 +1,5 @@
-
+Lưu vào đây để tiện dùng :>
+Nguồn: Internet.
 ## Cách dùng GIT
 
 I.  Giới thiệu Git:
