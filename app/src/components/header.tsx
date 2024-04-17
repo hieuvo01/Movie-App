@@ -1,12 +1,17 @@
+'use client'
 import Link from 'next/link'
 import Image from 'next/image'
-import React from 'react'
 import { ModeToggle } from '@/components/ui/themetoggle'
 import SearchBar from './search-bar'
 import GenerateDropdown from './generate'
 import LoginButton from './login-button'
+import { AuthContext } from '@/lib/user-render'
+import { useContext } from 'react'
+import UserAvatar from './user-avatar'
 
 function Header() {
+  const { user, loading } = useContext(AuthContext);
+  console.log(user);
   return (
     // bg-gradient-to-t from-gray-200/0 via-gray-900/25 to-gray-900
     <header className='flex fixed w-full z-20 top-0 items-center justify-center p-3 bg-slate-900'>
@@ -17,7 +22,7 @@ function Header() {
         <div className='flex text-xs space-x-2'>
             <GenerateDropdown />
             <SearchBar />
-              <LoginButton />
+              { user && user.username ? <UserAvatar /> : <LoginButton />}
             <ModeToggle />
         </div>
       </div>

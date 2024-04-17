@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "./src/components/header";
 import { ThemeProvider } from "@/components/ui/provider";
 import Footer from "./src/components/footer";
+import { AuthProvider } from "@/lib/user-render";
 
 export const metadata: Metadata = {
   title: "iMovies",
@@ -17,6 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-white dark:bg-[#1a1c29] ">
+      <AuthProvider>
         <ThemeProvider
             attribute="class"
             defaultTheme="system"
@@ -27,6 +29,7 @@ export default function RootLayout({
             {children}
             {/* <Footer /> */}
           </ThemeProvider>
+      </AuthProvider>
           </body>
     </html>
   );

@@ -9,10 +9,23 @@ import {
 import Link from "next/link";
 import { FaChevronDown } from "react-icons/fa";
 import axios from "axios";
-const GenerateDropdown = async () => {
-  const urlGene = `${process.env.URL_MOVIE}/genres`;
+import { useEffect, useState } from "react";
+const GenerateDropdown = () => {
+  const [data, setData] = useState();
 
-  const { data } = await axios.get(urlGene).then(res => res.data);
+  const handleLoad = async () => {
+    const urlGene = `http://localhost:3001/genres`;
+  
+    const { data } = await axios.get(urlGene).then(res => res.data);
+
+    setData(data);
+
+  }
+
+  useEffect(() => {
+    handleLoad();
+  }, [])
+
 
   // const data = [];
 

@@ -34,6 +34,7 @@ const Watch = () => {
                 Report Error
               </button>
             </div>
+            <h5 className="text-sm">Vote: {data?.data.vote_average}</h5>
             <div>
               <p className="text-gray-400">Choose Server:</p>
               <div className="flex space-x-2">
@@ -63,19 +64,7 @@ const Watch = () => {
               <h2 className="text-lg font-bold">Year Released</h2>
               <div className="flex flex-col space-y-1">
                 <a className="text-gray-400 hover:text-white" href="#">
-                  2023
-                </a>
-                <a className="text-gray-400 hover:text-white" href="#">
-                  2022
-                </a>
-                <a className="text-gray-400 hover:text-white" href="#">
-                  2021
-                </a>
-                <a className="text-gray-400 hover:text-white" href="#">
-                  2020
-                </a>
-                <a className="text-gray-400 hover:text-white" href="#">
-                  2019
+                  {data?.data.release_date}
                 </a>
               </div>
             </div>

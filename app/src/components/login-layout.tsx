@@ -39,7 +39,9 @@ export default function LoginLayout() {
         data: values
       });
       localStorage.setItem('token', JSON.stringify(response.data.token));
-      route.push('/');
+      console.log(response);
+      alert('Successfully logged in!');
+      window.location.href = '/';
 
     } catch (error) {
       console.error("Login Error:", error);
@@ -80,12 +82,17 @@ export default function LoginLayout() {
                 <FormItem>
                   <FormLabel>Password</FormLabel>
                   <FormControl>
-                    <Input placeholder="Password" {...field} />
+                    <Input type='password' placeholder="Password" {...field} />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage/>
                 </FormItem>
               )}
             />
+            <FormField
+              render={({ field }) => (
+                <FormItem>
+                </FormItem>
+              )} name={''}            />
             <Button type="submit">Login</Button>
             <h4>Are you new to this site? <Link className='text-sky-400' href="/register">Register now!</Link></h4>
           </form>

@@ -11,8 +11,8 @@ type IProps = {
 export default async function SearchPag({ params: { term } }: IProps) {
   const data = await searchMovie(term);
   return (
-    <div>
-      <MovieCarousel movies={data} title="Result Search" isVertical />
+    <div className="mt-32">
+      <MovieCarousel movies={data} title="Result search for: " isVertical />
     </div>
   );
 }
